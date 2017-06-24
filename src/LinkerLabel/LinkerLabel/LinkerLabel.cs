@@ -65,6 +65,9 @@ namespace LinkerLabel.Shared
 
 		private void UpdateMatchWords()
 		{
+			if(ItemsSource == null)
+				return;
+			
 			var txt = Text;
 			var buffer = new List<MatchWord>();
 			var sources = ItemsSource.Cast<string>().ToList();
@@ -84,10 +87,15 @@ namespace LinkerLabel.Shared
 			OnPropertyChanged(nameof(MatchWords));
 		}
 
-		private IEnumerator<T> Cast<T>(IEnumerator iterator)
+		protected override void OnPropertyChanged(string propertyName = null)
 		{
-			while (iterator.MoveNext())
-				yield return (T) iterator.Current;
+			base.OnPropertyChanged(propertyName);
+			if (propertyName == TextProperty.PropertyName
+				|| propertyName == LinkColorProperty.PropertyName
+				|| propertyName == ItemsSourceProperty.PropertyName)
+			{
+				UpdateMatchWords();
+			}
 		}
 
 		internal struct MatchWord

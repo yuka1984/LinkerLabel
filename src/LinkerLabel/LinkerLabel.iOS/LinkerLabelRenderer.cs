@@ -31,9 +31,7 @@ namespace LinkerLabel.iOS
 
 		private void OnPropertyChanged(object sender, PropertyChangedEventArgs propertyChangedEventArgs)
 		{
-			if (propertyChangedEventArgs.PropertyName == nameof(Shared.LinkerLabel.MatchWords)
-			    || propertyChangedEventArgs.PropertyName == Label.TextProperty.PropertyName
-			    || propertyChangedEventArgs.PropertyName == Shared.LinkerLabel.LinkColorProperty.PropertyName)
+			if (propertyChangedEventArgs.PropertyName == nameof(Shared.LinkerLabel.MatchWords))
 				UpdateLinker();
 		}
 

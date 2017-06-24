@@ -26,9 +26,7 @@ namespace LinkerLabel.Droid
 
 		private void OnPropertyChanged(object sender, PropertyChangedEventArgs propertyChangedEventArgs)
 		{
-			if (propertyChangedEventArgs.PropertyName == nameof(Shared.LinkerLabel.MatchWords)
-				|| propertyChangedEventArgs.PropertyName == Shared.LinkerLabel.TextProperty.PropertyName
-				|| propertyChangedEventArgs.PropertyName == Shared.LinkerLabel.LinkColorProperty.PropertyName)
+			if (propertyChangedEventArgs.PropertyName == nameof(Shared.LinkerLabel.MatchWords))
 			{
 				UpdateLinker();
 			}
