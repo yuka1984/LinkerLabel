@@ -1,0 +1,39 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:local="clr-namespace:LinkerLabel"
+             xmlns:shared="clr-namespace:LinkerLabel.Shared;"
+             x:Class="LinkerLabel.MainPage" x:Name="Page">
+  <ContentPage.BindingContext>
+    <local:MainPageViewModel />
+  </ContentPage.BindingContext>
+
+  <ListView ItemsSource="{Binding LinkWords}">
+    <ListView.Header>
+      <StackLayout Padding="10">
+        <Frame Padding="10">
+          <shared:LinkerLabel Text="{Binding BaseText}" 
+                              FontSize="15"
+                              VerticalOptions="Center" HorizontalTextAlignment="Start"
+                              HorizontalOptions="Center"  ItemsSource="{Binding LinkWords}" Command="{Binding LinkCommand}"/>
+        </Frame>
+        
+        <Grid Margin="0,20,0,0">
+          <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="100" />
+          </Grid.ColumnDefinitions>
+          <Entry Text="{Binding InputText,Mode=TwoWay}" Grid.Column="0" />
+          <Button Text="Add" Command="{Binding EntryCommand}" CommandParameter="{Binding InputText}" Grid.Column="1" />
+        </Grid>
+      </StackLayout>
+    </ListView.Header>
+    <ListView.ItemTemplate>
+      <DataTemplate>
+        <TextCell Text="{Binding}" />
+      </DataTemplate>
+    </ListView.ItemTemplate>
+  </ListView>
+
+
+</ContentPage>
