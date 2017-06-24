@@ -1,2 +1,2 @@
 # LinkerLabel
-Label in Link for Xamarin.Forms
+Links in Label for Xamarin.Forms
